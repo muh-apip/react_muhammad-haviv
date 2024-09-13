@@ -1,4 +1,4 @@
-# Materi Version Control
+# Materi Version Control and Branch Management (Git)
 
 ## Summary
 
