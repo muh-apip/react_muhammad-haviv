@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Create Product</title>
+  </head>
+  <body>
+    <h1>Create Product</h1>
+    <h2>Detail Product</h2>
+
+    <form action="" method="post">
+      <label for="name">Product name :</label><br />
+      <input
+        type="text"
+        id="product-name"
+        name="name"
+        required
+        minlength="6"
+        maxlength="50"
+      /><br /><br />
+
+      <label for="category">Product category :</label><br />
+      <select name="category" id="product-category" required>
+        <option value=""></option>
+        <option value="Food">Food</option>
+        <option value="Drink">Drink</option></select
+      ><br /><br />
+
+      <label for="product-freshness">Product Freshness :</label><br />
+      <input
+        type="radio"
+        id="product-freshness-new"
+        name="product-freshness"
+        value="brand new"
+        required
+      />Brand New<br />
+      <input
+        type="radio"
+        id="product-freshness-second"
+        name="product-freshness"
+        value="second hand"
+      />Second Hand<br />
+      <input
+        type="radio"
+        id="product-freshness-refurbished"
+        name="product-freshness"
+        value="refurbished"
+      />Refurbished<br /><br />
+
+      <label for="myfile">Image of Product</label>
+      <input type="file" id="myfile" name="myfile" required /><br /><br />
+
+      <label for="description">Additional Description</label><br />
+      <textarea
+        name="description"
+        rows="5"
+        cols="40"
+        required
+      ></textarea
+      ><br /><br />
+
+      <label for="price">Product Price :</label><br />
+      <input
+        type="number"
+        id="price"
+        name="price"
+        required
+        min="1"
+        placeholder="$100"
+      /><br /><br />
+
+      <input type="submit" value="Create Product" />
+    </form>
+  </body>
+</html>
