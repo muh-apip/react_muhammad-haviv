@@ -7,6 +7,7 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #f4f4f4;
+  transition: background-color 0.3s ease; /* Transisi untuk background */
 }
 
 nav {
@@ -28,7 +29,6 @@ li {
 li a {
   display: block;
   padding: 14px 16px;
-  text-decoration: none;
 }
 
 section.hero {
@@ -39,10 +39,11 @@ section.hero {
   height: 100vh;
   padding: 0 20px;
   background-color: #37517e;
+  transition: background-color 0.3s ease; /* Transisi untuk background hero */
 }
 
 .content {
-  margin-left: 82px;
+  padding-left: 82px;
 }
 
 h1 {
@@ -77,6 +78,11 @@ h1 {
   padding: 10px 20px;
   border: none;
   border-radius: 30px;
+  transition: background-color 0.3s ease; /* Transisi pada tombol */
+}
+
+.btn-get-started:hover {
+  background-color: #63ceff;
 }
 
 .btn-watch-video {
@@ -94,9 +100,7 @@ button {
 .image-container {
   width: 636px;
   height: 527px;
-  top: 8px;
-  left: 639px;
-  margin-right: 83px;
+  padding-right: 83px;
 }
 
 .image-container img {
@@ -140,6 +144,7 @@ form button {
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  transition: background-color 0.3s ease; /* Transisi pada tombol */
 }
 
 form button:hover {
@@ -234,9 +239,56 @@ footer {
   background-color: #37517e;
 }
 
-.copyright p{
+.copyright p {
   font-family: 'Jost';
   font-size: medium;
   color: white;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  section.hero {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .content {
+      padding-left: 0;
+      padding-bottom: 20px;
+  }
+
+  .image-container {
+      width: 100%;
+      padding-right: 0;
+  }
+
+  h1 {
+      font-size: 32px;
+      line-height: 40px;
+  }
+
+  .content p {
+      font-size: 18px;
+  }
+
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .footer-section {
+      padding: 20px;
+      text-align: center;
+  }
+
+  form input[type="email"] {
+      width: 100%;
+      max-width: 300px;
+  }
+}
