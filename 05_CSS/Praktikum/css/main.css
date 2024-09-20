@@ -42,7 +42,6 @@ section.hero {
 }
 
 .content {
-  max-width: 50%;
   margin-left: 82px;
 }
 
@@ -105,14 +104,14 @@ button {
   height: auto;
 }
 
-#subscription {
+.footer #subscription {
   font-family: "Jost";
-  background-color: #f3f5fa;
+  background-color: #f6f8ff;
   text-align: center;
-  margin-top: 30px;
+  padding: 20px;
 }
 
-h3 {
+#subscription h3 {
   font-size: 2rem;
   color: #37517e;
   margin-bottom: 20px;
@@ -146,25 +145,82 @@ form button:hover {
 }
 
 footer {
-  background-color: #37517e;
-  padding: 20px; 
-  font-size: 0.9rem; 
+  background: #f8f9fa;
+  font-size: 14px;
+}
+
+.footer-container {
   display: flex;
   justify-content: space-between;
-  bottom: 0;
-  width: 100%;
+  flex-wrap: wrap; /* Membuat item footer bisa membungkus */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-footer p {
-  margin: 20px;
-  padding: 10px;
+.footer-section {
+  flex: 1; 
+  margin: 0 20px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  display: inline-block; 
+}
+
+.footer-section ul li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.footer-section h4 {
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer-section p, .footer-section ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  background-color: #5bc0de;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  padding-bottom: 20px;
+  background-color: #37517e;
+}
+
+.copyright p{
   font-family: 'Jost';
   font-size: medium;
-  color: #f4f4f4;
-}
-
-footer a {
-  color: #47b2e4; 
-  text-decoration: none; 
+  color: white;
 }
 
