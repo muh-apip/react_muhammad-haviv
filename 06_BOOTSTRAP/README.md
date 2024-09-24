@@ -10,6 +10,3 @@
 
 3. **Dokumentasi yang Lengkap**  
    Dokumentasi Bootstrap jelas dan mudah dipahami. Kalau ada yang bingung, tinggal cari di dokumennya, banyak contoh dan penjelasan yang membantu.
-
-4. **Kompatibel dengan Browser Modern**  
-   Bootstrap sudah kompatibel dengan hampir semua browser modern, jadi gak perlu khawatir tampilan web jadi berantakan di browser tertentu.
