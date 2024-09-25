@@ -8,16 +8,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
-    <!-- Navbar -->
     <nav class="bg-white shadow-lg p-2">
         <div class="mx-auto max-w-7xl px-4">
             <div class="flex justify-between items-center">
-                <!-- Left Logo -->
                 <div>
                     <h1 class="text-xl font-bold text-gray-800">Simple header</h1>
                 </div>
 
-                <!-- Right Menu -->
                 <div class="flex space-x-4">
                     <a href="#" class="py-5 px-3 bg-blue-500 text-white rounded">Home</a>
                     <a href="#" class="py-5 px-3 text-gray-700 hover:bg-blue-500 hover:text-white rounded">Features</a>
@@ -61,7 +58,6 @@
                     />
                 </div>
 
-                <!-- Product Category -->
                 <div>
                     <label for="product-category" class="block text-gray-700">Product Category:</label>
                     <select
@@ -76,7 +72,6 @@
                     </select>
                 </div>
 
-                <!-- Image Upload -->
                 <div>
                     <label for="myfile" class="block text-gray-700">Image of Product:</label>
                     <input
@@ -88,7 +83,6 @@
                     />
                 </div>
 
-                <!-- Product Freshness -->
                 <div>
                     <label class="block text-gray-700">Product Freshness:</label>
                     <div class="mt-2">
@@ -123,7 +117,6 @@
                     </div>
                 </div>
 
-                <!-- Additional Description -->
                 <div>
                     <label for="description" class="block text-gray-700">Additional Description:</label>
                     <textarea
@@ -135,7 +128,6 @@
                     ></textarea>
                 </div>
 
-                <!-- Product Price -->
                 <div>
                     <label for="price" class="block text-gray-700">Product Price:</label>
                     <input
@@ -150,7 +142,6 @@
                 </div>
             </div>
 
-            <!-- Submit Button -->
             <div class="text-center mt-8">
                 <input
                     type="submit"
@@ -161,7 +152,6 @@
         </form>
     </div>
 
-    <!-- Modal -->
     <div id="errorModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center hidden">
         <div class="bg-white p-5 rounded-lg shadow-lg">
             <h2 class="text-lg font-bold">Error</h2>
@@ -281,7 +271,6 @@
             }
 
             if (errors.length > 0) {
-                // Tampilkan modal dengan pesan kesalahan
                 errorMessage.innerText = errors.join(' ');
                 errorModal.classList.remove('hidden');
             } else {
