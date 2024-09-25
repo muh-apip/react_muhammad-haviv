@@ -11,8 +11,4 @@
 3. **Fitur Prototyping yang Kuat**  
    Figma menyediakan fitur prototyping yang memungkinkan desainer membuat interaksi dan animasi untuk mendemonstrasikan alur pengguna. Ini sangat membantu dalam presentasi ide dan pengujian pengalaman pengguna.
 
-4. **Komponen dan Style yang Dapat Digunakan Kembali**  
-   Figma memungkinkan pengguna untuk membuat komponen dan style yang dapat digunakan kembali di berbagai proyek. Ini mempercepat proses desain dan memastikan konsistensi dalam tampilan dan nuansa antarmuka.
 
-5. **Integrasi dan Ekstensi**  
-   Figma mendukung integrasi dengan berbagai alat dan layanan lain, seperti Slack dan JIRA, serta memiliki pustaka plugin yang luas. Ini memungkinkan pengguna untuk menambah fungsionalitas dan menyesuaikan alur kerja mereka.
