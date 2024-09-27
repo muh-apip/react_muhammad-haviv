@@ -27,7 +27,7 @@
   ```javascript
   const multiply = function(a, b) {
     return a * b;
-};
+  };
 
 console.log(multiply(4, 5)); // Output: 20
 
@@ -47,7 +47,5 @@ console.log(multiply(4, 5)); // Output: 20
   introduce() {
 
       return `Nama Saya ${this.name}, umur saya ${this.age} tahun`
-
   }
-
-}
+  }
