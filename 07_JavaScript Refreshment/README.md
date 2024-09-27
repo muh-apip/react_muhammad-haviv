@@ -22,7 +22,7 @@
   console.log(greet('Haviv')); 
 
 ### Fungsi Ekspresi
--Fungsi yang didefinisikan sebagai ekspresi, sering kali tidak memiliki nama (dikenal  sebagai fungsi anonim) dan dapat disimpan dalam variabel.
+- Fungsi yang didefinisikan sebagai ekspresi, sering kali tidak memiliki nama (dikenal  sebagai fungsi anonim) dan dapat disimpan dalam variabel.
 - **Contoh**:
   ```javascript
   const multiply = function(a, b) {
