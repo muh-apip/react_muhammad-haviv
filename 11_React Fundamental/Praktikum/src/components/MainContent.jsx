@@ -66,7 +66,6 @@ export default function MainContent() {
         </h1>
         <div className="grid grid-cols-1 gap-4">
           <div className="p-4">
-            {/* Form input fields */}
             <label htmlFor="productName" className="block text-gray-700">
               Product Name:
             </label>
@@ -161,7 +160,7 @@ export default function MainContent() {
                 type="number"
                 id="productPrice"
                 placeholder="$1"
-                value={productPrice} // Make this controlled
+                value={productPrice} 
                 onChange={(e) => setProductPrice(e.target.value)}
                 className="mt-2 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
               />
