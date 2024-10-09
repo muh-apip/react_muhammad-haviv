@@ -1,8 +1,6 @@
-# Introduction to React
+# React Fundamental
 
 ## Summary
-
-React adalah pustaka JavaScript yang digunakan untuk membuat antarmuka pengguna (UI) yang interaktif dan responsif. Dalam React, komponen adalah bagian-bagian kecil dari aplikasi yang dapat dibuat dan digunakan kembali. Berikut adalah penjelasan mengenai komponen, siklus hidup, dan props dalam React.
 
 ### 1. React Components
 
