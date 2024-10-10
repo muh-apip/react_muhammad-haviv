@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useState } from 'react';
 import logo from "../assets/logo.png/";
 
 const article = {
@@ -13,18 +12,33 @@ const article = {
   },
 };
 
-const Article = () =>{
+const Article = () => {
+  const [language, setLanguage] = useState("en"); 
+
+  const toggleLanguage = () => {
+    setLanguage((prevLang) => (prevLang === "en" ? "id" : "en"));
+  };
+
   return (
     <>
-    <div className="container mx-auto mt-10 max-w-3xl p-8">
-    <div className="flex justify-center items-center mb-6">
+      <div className="container mx-auto mt-10 max-w-3xl p-8">
+        <div className="flex justify-center items-center mb-6">
           <img className="h-12" src={logo} alt="logo tailwind" />
         </div>
         <h1 className="text-3xl font-semibold text-gray-800 text-center mb-8">
-        {article.title.en}
+          {article.title[language]} 
         </h1>
-      <p>{article.description.en}</p>
-    </div>
+        <p className='text-center'>{article.description[language]} </p>
+
+        <div className="text-center mt-6">
+          <button
+            onClick={toggleLanguage}  
+            className="bg-blue-600 text-white px-4 py-2 rounded-md"
+          >
+            {language === "en" ? "Ganti ke Bahasa Indonesia" : "Switch to English"}
+          </button>
+        </div>
+      </div>
     </>
   );
 };

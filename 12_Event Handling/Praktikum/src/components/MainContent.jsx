@@ -10,7 +10,8 @@ export default function MainContent() {
   const [productPrice, setProductPrice] = useState("");
   const [products, setProducts] = useState([]);
   const [rowCount, setRowCount] = useState(1000);
-  const [error, setError] = useState("");
+
+  const [errors, setErrors] = useState({});
 
   const resetForm = () => {
     setProductName("");
@@ -19,26 +20,38 @@ export default function MainContent() {
     setProductFreshness("");
     setProductDescription("");
     setProductPrice("");
-    setError("");
+    setErrors({});
   };
 
-  const handleProductNameChange = (e) => {
-    const name = e.target.value;
-    setProductName(name);
+  const validateForm = () => {
+    const newErrors = {};
 
-    if (name.length > 10 && name.length <= 25) {
-      setError("Product Name should not exceed 10 characters.");
-    } else if (name.length > 25) {
-      alert("Product Name must not exceed 25 characters.");
-      setError("");
-    } else {
-      setError("");
+    if (!productName || productName.length > 25) {
+      newErrors.productName = "Product Name is required and must be less than 25 characters.";
     }
+
+    if (!productCategory) {
+      newErrors.productCategory = "Product Category is required.";
+    }
+
+    if (!productImage) {
+      newErrors.productImage = "Product Image is required.";
+    }
+
+    if (!productDescription) {
+      newErrors.productDescription = "Product Description is required.";
+    }
+
+    if (!productPrice || isNaN(productPrice) || productPrice <= 0) {
+      newErrors.productPrice = "Product Price must be a positive number.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleAddProduct = () => {
-    if (productName.length > 25) {
-      alert("Cannot add product. Product Name exceeds 25 characters.");
+    if (!validateForm()) {
       return;
     }
 
@@ -51,12 +64,7 @@ export default function MainContent() {
       productPrice,
     };
 
-    const updatedProducts = addProduct(
-      products,
-      productData,
-      rowCount,
-      resetForm
-    );
+    const updatedProducts = addProduct(products, productData, rowCount, resetForm);
 
     if (updatedProducts !== products) {
       setProducts(updatedProducts);
@@ -75,42 +83,42 @@ export default function MainContent() {
     searchProduct(products, searchValue);
   };
 
-
   return (
     <>
       <div className="container mx-auto max-w-3xl p-8">
-      <h2 class="text-xl font-semibold text-gray-700 mb-4">Detail Product</h2>
+        <h2 className="text-xl font-semibold text-gray-700 mb-4">Detail Product</h2>
         <div className="grid grid-cols-1 gap-4">
           <div className="p-4">
             <label htmlFor="productName" className="block text-gray-700">
               Product Name:
             </label>
             <input
-               type="text"
-               id="productName"
-               value={productName}
-               onChange={handleProductNameChange}
-               className={`mt-2 w-full p-2 border ${
-                 error ? "border-red-500" : "border-gray-300"
-               } rounded-lg`}
+              type="text"
+              id="productName"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+              className={`mt-2 w-full p-2 border ${errors.productName ? "border-red-500" : "border-gray-300"} rounded-lg`}
             />
-            {error && <p className="text-red-500 mt-2">{error}</p>}
+            {errors.productName && <p className="text-red-500 mt-2">{errors.productName}</p>}
+
             <div>
-              <label htmlFor="product-category" className="block text-gray-700">
+              <label htmlFor="productCategory" className="block text-gray-700">
                 Product Category:
               </label>
               <select
                 id="productCategory"
                 value={productCategory}
                 onChange={(e) => setProductCategory(e.target.value)}
-                className="mt-2 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                className={`mt-2 w-full p-2 border ${errors.productCategory ? "border-red-500" : "border-gray-300"} rounded-lg`}
               >
                 <option value="">Choose...</option>
                 <option value="ipsum">ipsum</option>
               </select>
+              {errors.productCategory && <p className="text-red-500 mt-2">{errors.productCategory}</p>}
             </div>
+
             <div>
-              <label htmlFor="product-image" className="block text-gray-700">
+              <label htmlFor="productImage" className="block text-gray-700">
                 Image of Product:
               </label>
               <input
@@ -118,49 +126,13 @@ export default function MainContent() {
                 id="productImage"
                 value={productImage}
                 onChange={(e) => setProductImage(e.target.value)}
-                className="mt-2 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                className={`mt-2 w-full p-2 border ${errors.productImage ? "border-red-500" : "border-gray-300"} rounded-lg`}
               />
+              {errors.productImage && <p className="text-red-500 mt-2">{errors.productImage}</p>}
             </div>
+
             <div>
-              <label className="block text-gray-700">Product Freshness:</label>
-              <div className="mt-2">
-                <label className="inline-flex items-center">
-                  <input
-                    type="radio"
-                    name="productFreshness"
-                    value="Brand New"
-                    onChange={(e) => setProductFreshness(e.target.value)}
-                    className="text-blue-500"
-                    required
-                  />
-                  <span className="ml-2">Brand New</span>
-                </label>
-                <label className="inline-flex items-center ml-4">
-                  <input
-                    type="radio"
-                    name="productFreshness"
-                    value="Second Hand"
-                    onChange={(e) => setProductFreshness(e.target.value)}
-                    className="text-blue-500"
-                    required
-                  />
-                  <span className="ml-2">Second Hand</span>
-                </label>
-                <label className="inline-flex items-center ml-4">
-                  <input
-                    type="radio"
-                    name="productFreshness"
-                    value="Refurbished"
-                    onChange={(e) => setProductFreshness(e.target.value)}
-                    className="text-blue-500"
-                    required
-                  />
-                  <span className="ml-2">Refurbished</span>
-                </label>
-              </div>
-            </div>
-            <div>
-              <label htmlFor="description" className="block text-gray-700">
+              <label htmlFor="productDescription" className="block text-gray-700">
                 Additional Description:
               </label>
               <textarea
@@ -168,25 +140,28 @@ export default function MainContent() {
                 rows={5}
                 value={productDescription}
                 onChange={(e) => setProductDescription(e.target.value)}
-                className="mt-2 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                className={`mt-2 w-full p-2 border ${errors.productDescription ? "border-red-500" : "border-gray-300"} rounded-lg`}
               />
+              {errors.productDescription && <p className="text-red-500 mt-2">{errors.productDescription}</p>}
             </div>
+
             <div>
-              <label htmlFor="price" className="block text-gray-700">
+              <label htmlFor="productPrice" className="block text-gray-700">
                 Product Price:
               </label>
               <input
                 type="number"
                 id="productPrice"
-                placeholder="$1"
-                value={productPrice} 
+                value={productPrice}
                 onChange={(e) => setProductPrice(e.target.value)}
-                className="mt-2 w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200"
+                className={`mt-2 w-full p-2 border ${errors.productPrice ? "border-red-500" : "border-gray-300"} rounded-lg`}
               />
+              {errors.productPrice && <p className="text-red-500 mt-2">{errors.productPrice}</p>}
             </div>
+
             <button
               onClick={handleAddProduct}
-              className="bg-blue-600 w-full text-white px-4 py-2 rounded-md mt-4"
+              className="bg-blue-600 hover:bg-blue-700 transition-colors w-full text-white px-4 py-2 rounded-md mt-4"
             >
               Add Product
             </button>
@@ -198,36 +173,34 @@ export default function MainContent() {
         <h1 className="text-2xl font-semibold text-gray-800">List Product</h1>
       </div>
       <div className="p-4">
-        <table
-          id="dataTable"
-          className="table-auto shadow-lg rounded-lg w-auto"
-        >
+        <table id="dataTable" className="table-auto shadow-lg rounded-lg">
           <thead>
             <tr className="bg-gray-200">
-              <th className="px-2 py-2 text-left">No</th>
-              <th className="px-2 py-2 text-left">Product Name</th>
-              <th className="px-2 py-2 text-left">Product Category</th>
-              <th className="px-2 py-2 text-left">Image of Product</th>
-              <th className="px-2 py-2 text-left">Product Freshness</th>
-              <th className="px-2 py-2 text-left">Additional Description</th>
-              <th className="px-2 py-2 text-left">Product Price</th>
+              <th className="px-4 py-2 text-left">No</th>
+              <th className="px-4 py-2 text-left">Product Name</th>
+              <th className="px-4 py-2 text-left">Product Category</th>
+              <th className="px-4 py-2 text-left">Image of Product</th>
+              <th className="px-4 py-2 text-left">Product Freshness</th>
+              <th className="px-4 py-2 text-left">Additional Description</th>
+              <th className="px-4 py-2 text-left">Product Price</th>
             </tr>
           </thead>
           <tbody>
             {products.map((product, index) => (
               <tr key={product.rowNumber} className="border-b">
-                <td className="px-2 py-2">{index + 1}</td>
-                <td className="px-2 py-2">{product.name}</td>
-                <td className="px-2 py-2">{product.category}</td>
-                <td className="px-2 py-2">{product.image}</td>
-                <td className="px-2 py-2">{product.freshness}</td>
-                <td className="px-2 py-2">{product.description}</td>
-                <td className="px-2 py-2">${product.price}</td>
+                <td className="px-4 py-2">{index + 1}</td>
+                <td className="px-4 py-2">{product.productName}</td>
+                <td className="px-4 py-2">{product.productCategory}</td>
+                <td className="px-4 py-2">{product.productImage}</td>
+                <td className="px-4 py-2">{product.productFreshness}</td>
+                <td className="px-4 py-2">{product.productDescription}</td>
+                <td className="px-4 py-2">${product.productPrice}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
       <div className="p-4">
         <input
           type="text"
@@ -236,20 +209,19 @@ export default function MainContent() {
           className="border border-gray-300 rounded-md p-2"
         />
       </div>
+
       <div className="p-4">
         <input
           type="button"
           value="Deletion"
           onClick={handleDeleteLastRow}
-          className="bg-blue-600 text-white px-4 py-2 rounded-l-md"
+          className="bg-red-600 hover:bg-red-700 transition-colors text-white px-4 py-2 mr-4 rounded-md"
         />
         <input
           type="button"
           value="Search"
-          onClick={() =>
-            handleSearchProduct(document.getElementById("searchInput").value)
-          }
-          className="bg-white text-blue-600 border border-blue-600 px-4 py-2 rounded-r-md"
+          onClick={() => handleSearchProduct(document.getElementById("searchInput").value)}
+          className="bg-blue-600 hover:bg-blue-700 transition-colors text-white px-4 py-2 rounded-md"
         />
       </div>
     </>
