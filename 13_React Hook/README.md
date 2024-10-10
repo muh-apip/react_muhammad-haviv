@@ -29,6 +29,7 @@ function ExampleComponent() {
     };
   }, []); // Array kosong berarti hanya dijalankan sekali saat komponen muncul
 }
+```
 
 ### 3. Custom Hook
 
