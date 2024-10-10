@@ -7,7 +7,10 @@ Hooks adalah fitur di React yang memudahkan kita untuk menggunakan fitur-fitur s
 
 Dengan hooks, kita bisa membuat komponen yang lebih sederhana dan lebih mudah dibaca tanpa harus menggunakan **class**.
 
-### 2. useEffect
+### 2. useState
+`useState` adalah hook yang digunakan untuk menambahkan **state** ke dalam komponen fungsional. State adalah data yang dapat berubah seiring waktu dan digunakan untuk membuat komponen lebih dinamis.
+
+### 3. useEffect
 `useEffect` adalah hook yang digunakan untuk mengelola efek samping (side effects) dalam komponen React, seperti mengambil data dari API, memperbarui DOM, atau memasang/membersihkan event listener.
 
 #### Contoh Penggunaan:
@@ -31,7 +34,7 @@ function ExampleComponent() {
 }
 ```
 
-### 3. Custom Hook
+### 4. Custom Hook
 
 **Custom Hook** adalah cara untuk membuat hook sendiri berdasarkan hook-hook bawaan React. Tujuannya adalah agar kita bisa menggunakan logika yang sama di banyak komponen tanpa perlu menyalin kode berulang kali.
 
