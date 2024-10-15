@@ -12,11 +12,11 @@ const Home = () => {
           className="flex-grow flex items-center justify-center h-full"
           style={{
             backgroundImage: `url(${HomeImage})`,
-            backgroundSize: 'cover', // Cover the entire area
-            backgroundPosition: 'center', // Center the image
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center', 
           }}
         >
-          <div className="text-center p-6 bg-white bg-opacity-80 rounded-lg max-w-lg"> {/* Added background for text readability */}
+          <div className="text-center p-6 bg-white bg-opacity-80 rounded-lg max-w-lg"> 
             <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to Our Website!</h1>
             <p className="text-lg text-gray-600 mb-6">
               This is a place where you can find more information about our services,

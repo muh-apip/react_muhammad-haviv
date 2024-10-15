@@ -22,7 +22,7 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmittedData(formData);
-    // Reset form after submission
+    
     setFormData({
       username: "",
       firstName: "",
