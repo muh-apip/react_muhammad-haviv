@@ -1,6 +1,7 @@
 # Deployment with Vercel
 
 ## Summary
+## Link vercel.app : https://react-muhammad-haviv-fvsn.vercel.app/
 
 ### 1. Pengertian Deployment
 Deployment adalah proses mengirimkan aplikasi yang sudah selesai dikembangkan ke lingkungan produksi agar dapat diakses oleh pengguna akhir. Ini mencakup langkah-langkah untuk mempersiapkan dan menempatkan aplikasi di server atau platform hosting sehingga aplikasi dapat beroperasi secara live.
