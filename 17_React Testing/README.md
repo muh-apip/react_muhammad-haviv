@@ -20,4 +20,4 @@ React Testing Library (RTL): Perpustakaan untuk menguji komponen React, berfokus
    npm install --save-dev @testing-library/react jest
    ```
 2. **Struktur Folder**: 
-Buat direktori __tests__ di folder proyek untuk menyimpan file testing.
+Buat direktori ``__tests__`` di folder proyek untuk menyimpan file testing.
