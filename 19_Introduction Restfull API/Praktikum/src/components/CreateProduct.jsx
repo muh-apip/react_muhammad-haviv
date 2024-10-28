@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import useProductStore from "../store/productStore";
-import axios from "axios";
+import { getProducts, addProduct, updateProduct, deleteProduct } from "../services/productService";
 import ImageLogo from "../assets/img/logo.png";
 
 export default function CreateProduct() {
@@ -15,20 +15,19 @@ export default function CreateProduct() {
     freshness: "",
     price: "",
   });
-
-  const apiURL = "https://671fa4bee7a5792f052f0742.mockapi.io/Product";
+  const [message, setMessage] = useState("");
 
   // Fetch Products from API
   useEffect(() => {
-    axios
-      .get(apiURL)
-      .then((response) => {
-        console.log("API Response:", response.data);
-        setProducts(response.data);
-      })
-      .catch((error) => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
         console.error("Error fetching data:", error);
-      });
+      }
+    };
+    fetchProducts();
   }, []);
 
   // Handle Input Change
@@ -40,76 +39,62 @@ export default function CreateProduct() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // Handle Submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (isEditing) {
-      // Update Product logic
-      axios
-        .put(`${apiURL}/${currentProductId}`, {
+      try {
+        const updatedProduct = await updateProduct(currentProductId, {
           ProductName: formValues.name,
           ProductCategory: formValues.category,
           ProductFreshness: formValues.freshness,
           ProductPrice: formValues.price,
-        })
-        .then((response) => {
-          console.log("Update successful:", response.data);
-          setProducts((prev) =>
-            prev.map((product) =>
-              product.NO === currentProductId
-                ? { ...product, ...formValues }
-                : product
-            )
-          );
-          setIsEditing(false);
-          resetForm();
-        })
-        .catch((error) => {
-          console.error("Error updating product:", error);
-          alert(
-            "Error updating product: " +
-              (error.response?.data || "Unknown error")
-          );
         });
+        setProducts((prev) =>
+          prev.map((product) =>
+            product.NO === currentProductId
+              ? { ...product, ...formValues }
+              : product
+          )
+        );
+        setMessage("Product updated successfully!");
+        resetForm();
+      } catch (error) {
+        console.error("Error updating product:", error);
+      }
     } else {
-      // Add new Product logic
-      axios
-        .post(apiURL, {
+      try {
+        const newProduct = await addProduct({
           ProductName: formValues.name,
           ProductCategory: formValues.category,
           ProductFreshness: formValues.freshness,
           ProductPrice: formValues.price,
-        })
-        .then((response) => {
-          console.log("Product added successfully:", response.data);
-          setProducts([...products, response.data]);
-          resetForm();
-        })
-        .catch((error) => {
-          console.error("Error adding product:", error);
-          alert(
-            "Error adding product: " + (error.response?.data || "Unknown error")
-          );
         });
+        setProducts([...products, newProduct]);
+        setMessage("Product added successfully!");
+        resetForm();
+      } catch (error) {
+        console.error("Error adding product:", error);
+      }
     }
   };
 
-  const handleDelete = (id) => {
+  // Delete Product
+  const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
-      axios
-        .delete(`${apiURL}/${id}`)
-        .then((response) => {
-          console.log("Delete successful:", response.data);
-          setProducts(products.filter((product) => product.NO !== id));
-        })
-        .catch((error) => {
-          console.error("Error deleting product:", error.response.data);
-        });
+      try {
+        await deleteProduct(id);
+        setProducts(products.filter((product) => product.NO !== id));
+      } catch (error) {
+        console.error("Error deleting product:", error);
+      }
     }
   };
 
+  // Edit Product
   const handleEdit = (product) => {
-    setIsEditing(true); // Set mode editing menjadi true
-    setCurrentProductId(product.NO); // Simpan ID produk yang sedang diedit
+    setIsEditing(true);
+    setCurrentProductId(product.NO);
     setFormValues({
       name: product.ProductName,
       category: product.ProductCategory,
@@ -126,14 +111,12 @@ export default function CreateProduct() {
       freshness: "",
       price: "",
     });
+    setIsEditing(false);
+    setCurrentProductId(null);
   };
 
   const goBack = () => {
     navigate(-1);
-  };
-
-  const goToDetail = (product) => {
-    navigate("/product-detail", { state: { product } });
   };
 
   return (
@@ -295,6 +278,10 @@ export default function CreateProduct() {
               </div>
             </div>
           </form>
+          {message && (
+            <p className="text-green-500 text-center mt-2">{message}</p>
+          )}{" "}
+          {/* Tampilkan pesan */}
         </div>
       </div>
       {/* List Product Section */}
