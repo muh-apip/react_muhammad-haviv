@@ -1,4 +1,3 @@
-// src/services/productService.js
 import axios from 'axios';
 
 const apiURL = 'https://671fa4bee7a5792f052f0742.mockapi.io/Product';
