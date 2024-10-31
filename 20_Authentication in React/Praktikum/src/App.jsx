@@ -1,4 +1,3 @@
-// src/App.jsx
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import CreateProduct from './components/CreateProduct';
 import LandingPage from './components/LandingPage';
