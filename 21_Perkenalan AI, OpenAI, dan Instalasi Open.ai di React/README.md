@@ -9,20 +9,20 @@ Google Generative AI adalah layanan AI yang dapat digunakan untuk menghasilkan t
 ### 2. Cara Set Up Google Generative AI
 1. Persyaratan Awal
 Sebelum memulai, pastikan Anda memiliki hal-hal berikut:
-
 Akun Google Cloud: Jika belum memiliki, Anda perlu membuat akun Google Cloud dan mengaktifkan penagihan.
 Node.js dan npm: Pastikan Anda telah menginstal Node.js dan npm di sistem Anda.
+
 2. Membuat Proyek di Google Cloud
 Masuk ke Google Cloud Console: Kunjungi Google Cloud Console.
 
 Buat Proyek Baru:
-
 Klik pada dropdown proyek di bagian atas dan pilih “New Project”.
 Beri nama proyek Anda dan klik “Create”.
 Aktifkan API Generative AI:
 
 Di menu sebelah kiri, buka “APIs & Services” > “Library”.
 Cari "Generative AI" dan aktifkan API yang relevan untuk proyek Anda.
+
 3. Mendapatkan Kunci API
 Buka API & Services:
 
@@ -31,6 +31,7 @@ Buat Kunci API:
 
 Klik “Create credentials” dan pilih “API key”.
 Kunci API akan muncul. Simpan kunci ini dengan aman, karena Anda akan membutuhkannya untuk mengonfigurasi pustaka di aplikasi Anda.
+
 4. Instalasi Pustaka @google/generative-ai
 Buka Terminal: Di folder proyek React Anda.
 
