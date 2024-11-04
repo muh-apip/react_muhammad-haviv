@@ -92,26 +92,28 @@ function App() {
           </div>
         </div>
       </nav>
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-        <h1 className="mb-6">Chat Gemini AI</h1>
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+        <h1 className="text-3xl font-bold mb-6 text-gray-800">Chat Gemini AI</h1>
+        
+        {/* Input field yang lebih besar dan menarik */}
         <input
           type="text"
-          placeholder="Type here"
-          className="input input-ghost w-full max-w-xs"
+          placeholder="Masukkan pertanyaan Anda di sini..."
+          className="input input-ghost w-full max-w-xl p-4 text-lg border-2 border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-400"
           value={inputUser}
           onChange={handleChange} 
         />
+        
         <button
           onClick={handlePromptSubmit}
-          className="btn mt-6 mb-6 shadow-lg"
+          className="mt-6 mb-6 px-8 py-3 bg-blue-500 text-white text-lg font-semibold rounded-full shadow-lg hover:bg-blue-600 transition duration-300"
         >
           Kirim
         </button>
-        {/* Tampilkan response dari AI */}
-        <div className="w-full max-w-lg space-y-4">
-          <div className="chat chat-start">
-            <div className="chat-bubble bg-blue-500">{response}</div>
-          </div>
+        
+        <div className="w-full max-w-2xl p-6 bg-white rounded-lg shadow-lg text-gray-800 text-lg">
+          <h2 className="text-2xl font-semibold mb-4 text-blue-500">Respons:</h2>
+          <p className="whitespace-pre-line">{response}</p>
         </div>
       </div>
     </>
