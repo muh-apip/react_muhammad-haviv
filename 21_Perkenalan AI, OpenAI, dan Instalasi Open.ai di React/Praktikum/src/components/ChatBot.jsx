@@ -95,7 +95,6 @@ function App() {
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Chat Gemini AI</h1>
         
-        {/* Input field yang lebih besar dan menarik */}
         <input
           type="text"
           placeholder="Masukkan pertanyaan Anda di sini..."
