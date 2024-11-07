@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-Friendly Web Page</title>
+    <style>
+        /* Warna latar belakang gelap yang lebih hemat energi */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Warna gelap */
+            color: #E0E0E0; /* Teks terang */
+        }
+        header, footer {
+            background-color: #333333; /* Latar belakang lebih gelap */
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            background: #1E1E1E; /* Warna lebih gelap untuk area konten */
+        }
+        .high-res-background {
+            width: 100%;
+            height: auto;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .link-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .link-list li {
+            margin-bottom: 10px;
+        }
+        /* Mengoptimalkan ukuran gambar */
+        img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Eco-Friendly Web Page</h1>
+    </header>
+
+    <!-- Video dengan resolusi lebih rendah dan hanya dimuat ketika diperlukan -->
+    <video autoplay loop muted class="high-res-background" width="1280" height="720">
+        <source src="forest_compress.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <main>
+        <section class="content">
+            <h2>About Me</h2>
+            <!-- Menggunakan gambar dengan ukuran yang lebih kecil dan format WebP untuk efisiensi -->
+            <img src="https://via.placeholder.com/600x400.webp" alt="Optimized Image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</p>
+        </section>
+        <section class="content">
+            <h2>My Interests</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.</p>
+            <ul class="link-list">
+                <li><a href="#">Interest 1</a></li>
+                <li><a href="#">Interest 2</a></li>
+                <li><a href="#">Interest 3</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Eco-Friendly Web Page</p>
+    </footer>
+</body>
+</html>
